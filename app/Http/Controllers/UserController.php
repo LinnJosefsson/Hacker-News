@@ -22,11 +22,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id); //find or throw error
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->biography = $request->get('biography');
         $user->save();
-        return redirect('users')->with('status', 'Profile updated!');
+        return redirect('users')->with('status', 'Profile updated!'); //den sker inte nej
     }
 }
