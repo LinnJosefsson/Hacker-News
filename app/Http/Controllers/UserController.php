@@ -36,6 +36,7 @@ class UserController extends Controller
         $user->biography = $request->get('biography');
 
 
+
         //bild vill ej synas eller sparas i storage. detta är bara lite test
         if ($request->hasFile('image')) {
 

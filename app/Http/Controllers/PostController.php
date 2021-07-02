@@ -55,11 +55,21 @@ class PostController extends Controller
         ]);
         $post = new Post();
         $id = Auth::id();
+        //skickar till table:
         $post->message = $request->get('message');
         $post->title = $request->get('title');
-        $post->user_id = $id; //skickar till tabellen
+        $post->user_id = $id;
         $post->save();
 
         return redirect('post');
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->route('post.index');
     }
 }

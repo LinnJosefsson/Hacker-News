@@ -10,6 +10,10 @@
         <label for="email">Email</label>
         <input class="form-control" name="email" id="email" type="email" placeholder="mail@mail.com..." />
     </div>
+        <div class="form-group">
+        <label for="biography">Biography</label>
+        <textarea name="message" name="biography" id="biography" type="biography" placeholder="..."></textarea>
+    </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input class="form-control" name="password" id="password" type="password" placeholder="*****" />

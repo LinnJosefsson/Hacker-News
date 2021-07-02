@@ -31,6 +31,8 @@
 <label for="image">Image</label>
                         <input type="file" name="image">
 
+                            <a href="{{ url('/dashboard') }}"> Back to main </a>
+
                         @if(Auth::user()->image)
 <img src="{{url('/images/' .Auth::user()->image)}}" alt="Image"/>
 @endif
