@@ -13,3 +13,5 @@
 </form>
 
 @include('errors')
+
+<a href="{{ url('./register') }}"> Register a user </a>

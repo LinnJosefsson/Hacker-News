@@ -1,6 +1,6 @@
-<h1> Hi {{ Auth::user()->name }} !</h1>
+<h1> Hi {{ Auth::user()->name }}!</h1>
 <h2>Your biography:</h2>
-<p>{{ Auth::user()->biography }} !</p>
+<p>{{ Auth::user()->biography }}</p>
 
 
 

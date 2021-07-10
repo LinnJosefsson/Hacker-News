@@ -51,7 +51,6 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect('users')->with('status', 'Profile updated!'); //denna ska va länkad till informations-sidan sen
-
+        return redirect('dashboard')->with('status', 'Profile updated!');
     }
 }

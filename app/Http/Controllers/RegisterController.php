@@ -17,6 +17,7 @@ class RegisterController extends Controller
      */
     public function __invoke(Request $request)
     {
+        /* dd($request->all()); */
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',

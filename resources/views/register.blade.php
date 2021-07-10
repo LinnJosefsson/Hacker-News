@@ -12,7 +12,7 @@
     </div>
         <div class="form-group">
         <label for="biography">Biography</label>
-        <textarea name="message" name="biography" id="biography" type="biography" placeholder="..."></textarea>
+        <textarea name="biography" id="biography" placeholder="..."></textarea>
     </div>
     <div class="form-group">
         <label for="password">Password</label>

@@ -12,6 +12,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
         return view('post.index', ['posts' => $posts]);
     }
 
@@ -52,12 +53,14 @@ class PostController extends Controller
         $request->validate([
             'message' => 'required:string',
             'title' => 'required:string',
+            'link' => 'nullable|string',
         ]);
         $post = new Post();
         $id = Auth::id();
         //skickar till table:
         $post->message = $request->get('message');
         $post->title = $request->get('title');
+        $post->link = $request->get('link');
         $post->user_id = $id;
         $post->save();
 
