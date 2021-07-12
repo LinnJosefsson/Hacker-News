@@ -9,11 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     public function index()
     {
         $posts = Post::all();
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('post.index', ['posts' => $posts]);
+
+        if ($posts !== NULL) {
+            return view('post.index', ['posts' => $posts]);
+        }
+        return redirect('/index')->withErrors('Whoops! Please try something else.');
     }
 
     public function create()
@@ -67,12 +76,22 @@ class PostController extends Controller
         return redirect('post');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
+    {
+        /* $id = Auth::id(); */
+
+        /* $this->authorize('delete', $post); */
+
+        $post->delete();
+
+        return redirect('post'); ////????????
+    }
+}
+/*     public function destroy($id)
     {
         $post = Post::find($id);
 
         $post->delete();
 
         return redirect()->route('post.index');
-    }
-}
+    } */

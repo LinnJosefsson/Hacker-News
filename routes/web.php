@@ -33,3 +33,4 @@ Route::get('/usersprofile/index', function () {
 });
 Route::resource('users', UserController::class);
 Route::resource('post', PostController::class);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
