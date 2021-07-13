@@ -31,7 +31,10 @@
 <label for="image">Image</label>
                         <input type="file" name="image">
 
+
+
                             <a href="{{ url('/dashboard') }}"> Back to main </a>
+
 
                         @if(Auth::user()->image)
 <img src="{{url('/images/' .Auth::user()->image)}}" alt="Image"/>
@@ -43,6 +46,20 @@
 
 </form>
 
+<form action="/usersprofile/update-password" method="POST">
+    @csrf
+<input type="hidden" name="email" value="{{ Auth::user()->email }}" >
+        <label for="password">Password</label>
+        <input type="password" name="password" value="{{ Auth::user()->password }}" >
+        <label for="password-confirm">Confirm Password</label>
 
+                     <input name="password_confirmation" type="password">
+ <button type="submit" >Update password</button>
+</form>
+@if(session()->has('passwordSuccess'))
+    <div class="alert alert-success">
+        {{ session()->get('passwordSuccess') }}
+    </div>
+@endif
 
 

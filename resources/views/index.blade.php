@@ -12,6 +12,9 @@
     <button type="submit">Login</button>
 </form>
 
-@include('errors')
+<a href="{{ url('/forgot-password') }}"> Forgot Password?</a>
 
-<a href="{{ url('./register') }}"> Register a user </a>
+
+<a href="{{ url('/register') }}"> Register a user </a>
+
+@include('errors')

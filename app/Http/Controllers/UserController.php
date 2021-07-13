@@ -4,17 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
-
-use App\Http\Controllers\Image;
 
 class UserController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
     /**
      * Handle the incoming request.
      *
