@@ -52,8 +52,8 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 // like/unlike
 Route::middleware('auth')->group(function () {
-    Route::post('like', 'LikeController@like')->name('like');
-    Route::delete('like', 'LikeController@unlike')->name('unlike');
+    Route::post('like', [LikeController::class, 'like'])->name('like');
+    Route::delete('like', [LikeController::class, 'unlike'])->name('unlike');
 });
 
 

@@ -16,7 +16,6 @@ class LikeRequest extends FormRequest
     public function rules()
     {
         return [
-            // the class of the liked object
             'likeable_type' => [
                 "bail",
                 "required",
@@ -35,8 +34,6 @@ class LikeRequest extends FormRequest
                     }
                 },
             ],
-
-            // the id of the liked object
             'id' => [
                 "required",
                 function ($attribute, $value, $fail) {
