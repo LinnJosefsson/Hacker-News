@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -49,7 +50,14 @@ Route::resource('post', PostController::class);
 //delete post
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+// like/unlike
+Route::middleware('auth')->group(function () {
+    Route::post('like', 'LikeController@like')->name('like');
+    Route::delete('like', 'LikeController@unlike')->name('unlike');
+});
 
+
+//update password
 Route::post(
     'usersprofile/update-password',
     function (Request $request) {

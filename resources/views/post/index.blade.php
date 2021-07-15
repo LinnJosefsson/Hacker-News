@@ -5,11 +5,14 @@
 
 @include('errors')
 
+<div class="post">
 @foreach ($posts as $post)
 <h2>Posted by {{ $post->user->name }} {{$post->created_at}}</h2>
 <h2>{{ $post->title }} </h2>
  <p> {{ $post->message }}</p>
  <p> {{ $post->link }}</p>
+ @include('like', ['model' => $post])
+ </div>
  @if (Auth::user() && (Auth::user()->id == $post->user_id))
     <form action="{{ url('posts.edit', $post) }}" method="post">
                 @csrf
