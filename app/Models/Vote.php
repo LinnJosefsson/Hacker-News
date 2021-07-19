@@ -4,24 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Contracts\Likeable;
-use App\Models\Concerns\Likes;
 
 
-class Post extends Model implements Likeable
+
+class Vote extends Model
 {
     use HasFactory;
 
-    use Likes;
+    protected $fillable = [
+        'vote',
+        'post_id',
+        'user_id'
+    ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    //????
-    public function MostLikes()
+    public function post()
     {
-        return $this->hasMany(MostLikes::class);
+        return $this->belongsTo(Post::class);
     }
 }

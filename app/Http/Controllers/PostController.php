@@ -75,6 +75,17 @@ class PostController extends Controller
 
         return redirect('post');
     }
+    //sort desc or by likes
+    /*    public function getEvents(Request $request)
+    {
+        if ($request['sort'] == "created_at") {
+            $posts = Post::orderBy('created_at', 'desc')->get();
+        } elseif ($request['sort'] == "like") {
+
+            $posts = Post::withCount('likes')->orderByDesc('likes_count')->get();
+        }
+        return view('/usersprofile/index',  ['posts' => $posts]);
+    } */
 
     public function destroy(Post $post)
     {

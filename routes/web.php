@@ -5,9 +5,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MostLikesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+use App\Models\Vote;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -55,6 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::post('like', [LikeController::class, 'like'])->name('like');
     Route::delete('like', [LikeController::class, 'unlike'])->name('unlike');
 });
+
+//most liked
+Route::get('/mostlikes', Vote::class);
 
 
 //update password

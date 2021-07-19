@@ -8,6 +8,9 @@
 <label for="message">Message</label>
 <textarea name="message" id="message">{{ $post->message }}</textarea>
 
+<label for="link">Link</label>
+<textarea name="link" id="link" required></textarea>
+
 <label for="image_post">Image</label>
 <input type="file" name="image">
 
