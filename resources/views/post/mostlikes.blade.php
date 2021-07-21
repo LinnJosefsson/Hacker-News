@@ -1,1 +1,5 @@
-<p>{{ $total }}</p>
+
+<p>{{ $vote }}</p>
+
+<?php
+dd($vote);

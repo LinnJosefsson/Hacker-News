@@ -40,6 +40,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         return view('post.edit', ['post' => $post]);
+
+        //???
+        /*  return view('show', [
+            'post' => $post,
+        ]); */
     }
 
     public function update(Request $request)

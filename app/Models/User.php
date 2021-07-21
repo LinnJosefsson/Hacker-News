@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use App\Contracts\Likeable;
 use App\Models\Like;
+use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Commenter;
 
     /**
      * The attributes that are mass assignable.
@@ -54,6 +55,11 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function vote()
+    {
+        return $this->hasMany(Vote::class);
     }
 
 

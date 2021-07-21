@@ -25,6 +25,10 @@
  <p> {{ $post->message }}</p>
  <p> {{ $post->link }}</p>
  @include('like', ['model' => $post])
+
+ <div>
+     @comments(['model' => $post])
+ </div>
  </div>
  @if (Auth::user() && (Auth::user()->id == $post->user_id))
     <form action="{{ url('posts.edit', $post) }}" method="post">
@@ -48,5 +52,6 @@
 
 
 @endforeach
+
 <br>
 

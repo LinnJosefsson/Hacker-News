@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\MostLikesController;
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -52,6 +52,9 @@ Route::resource('post', PostController::class);
 //delete post
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+//comments, testar. behövs ej nog va tänker fel...?
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
 // like/unlike
 Route::middleware('auth')->group(function () {
     Route::post('like', [LikeController::class, 'like'])->name('like');
@@ -59,7 +62,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //most liked
-Route::get('/mostlikes', Vote::class);
+Route::post('mostlikes', [VoteController::class, 'store'])->name('topVotes');
 
 
 //update password
