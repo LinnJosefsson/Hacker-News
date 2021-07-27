@@ -106,8 +106,8 @@ class PostController extends Controller
     public function topVotes()
     {
 
-        $posts = Post::withCount(['votes'])->orderByDesc()->paginate(30);
-        return view('posts.mostlikes', ['posts' => $posts]);
+        $posts = Post::withCount(['vote'])->paginate(30);
+        return view('post.mostlikes', ['posts' => $posts]);
     }
 }
 /*     public function destroy($id)

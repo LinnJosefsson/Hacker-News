@@ -55,7 +55,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 //comments, testar. behövs ej nog va tänker fel...?
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 //top votes
-Route::get('/votes/top', [PostController::class, 'topVotes'])->name('posts.top');
+Route::get('/votes/top', [VoteController::class, 'topVotes'])->name('posts.top');
 
 //like
 Route::post('/posts/like/{post}', [VoteController::class, 'store'])->name('posts.like');
