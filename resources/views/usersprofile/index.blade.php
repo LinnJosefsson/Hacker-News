@@ -1,3 +1,7 @@
+@extends('layout.mainlayout')
+
+@section('content')
+<div class="container">
  @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -33,18 +37,15 @@
 
 
 
-                            <a href="{{ url('/dashboard') }}"> Back to main </a>
-
-
                         @if(Auth::user()->image)
-<img src="{{url('/images/' .Auth::user()->image)}}" alt="Image"/>
+<img src="{{url('/images/' .Auth::user()->image)}}" alt="Image"style="width:100px;"/>
 @endif
 
-    <button type="submit" >Update
-    </button>
+    <button type="submit" >Update</button>
 
 
 </form>
+<a href="{{ url('/dashboard') }}"> Back to main </a>
 
 <form action="/usersprofile/update-password" method="POST">
     @csrf
@@ -60,6 +61,8 @@
     <div class="alert alert-success">
         {{ session()->get('passwordSuccess') }}
     </div>
+</div>
 @endif
-
+@include('errors')
+@endsection
 

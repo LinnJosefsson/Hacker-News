@@ -1,3 +1,9 @@
+
+
+@extends('layout.mainlayout')
+
+@section('content')
+<div class="container">
 <h1> Hi {{ Auth::user()->name }}!</h1>
 <h2>Your biography:</h2>
 <p>{{ Auth::user()->biography }}</p>
@@ -10,11 +16,13 @@
 
 
                         @if(Auth::user()->image)
-<img src="{{url('/images/' .Auth::user()->image)}}" alt="Image"/>
+<img src="{{url('/images/' .Auth::user()->image)}}" alt="Image" style="width:100px; margin:20px;"/>
 @endif
 
+<br>
+<a href="{{ url('./usersprofile/index') }}">Edit your profile</a>
+{{-- <a href="{{ url('./post') }}"> Wall </a><br> --}}
 
-<a href="{{ url('./usersprofile/index') }}">Edit Profile</a>
-<a href="{{ url('/logout') }}">Logga ut</a>
-<a href="{{ url('./post') }}"> Wall </a>
-
+</div>
+@include('errors')
+@endsection

@@ -1,3 +1,8 @@
+
+@extends('layout.mainlayout')
+
+@section('content')
+<div class="container">
 <form action="/post/{{ $post->id }}" method="POST">
 @csrf
 <input type="hidden" name="_method" value="PUT">
@@ -18,3 +23,7 @@
     </button>
 
 </form>
+</div>
+@endforeach
+@include('errors')
+@endsection

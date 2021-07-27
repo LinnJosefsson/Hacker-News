@@ -12,7 +12,6 @@ class Vote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'vote',
         'post_id',
         'user_id'
     ];

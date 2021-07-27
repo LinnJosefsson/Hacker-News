@@ -1,9 +1,13 @@
-<a href="{{ url('/post/create') }}">Write post</a>
-<a href="{{ url('/dashboard') }}"> Back to main </a>
-<a href="{{ url('mostlikes') }}"> Most Likes </a>
 
+@extends('layout.mainlayout')
 
-@include('errors')
+@section('content')
+
+<div class="container">
+{{-- <a class="btn btn-primary" href="{{ url('/post/create') }}" role="button">Write post</a>
+<a class="btn btn-primary" href="{{ url('/dashboard') }}" role="button"> Your account </a>
+<a class="btn btn-primary" href="{{ url('mostlikes') }}" role="button"> Most Likes </a>
+ --}}
 
 
 {{-- <form action="{{ route('getEvents') }}">
@@ -19,17 +23,34 @@
 
 <div class="post">
 @foreach ($posts as $post)
-<h2>Posted by {{ $post->user->name }} {{$post->created_at}}</h2>
 {{-- <img src="{{ asset($post->user->image) }}"> --}}
 <h2>{{ $post->title }} </h2>
+<p>Posted by <b>{{ $post->user->name }}</b></p>
+<p>{{$post->created_at}}</p>
  <p> {{ $post->message }}</p>
- <p> {{ $post->link }}</p>
- @include('like', ['model' => $post])
+ <a href="//{{ $post->link }}" target="_blank">{{ $post->link }}</a>
+ <br>
+
+ @if ($post->postVotedBy(auth()->user()))
+<form action="{{ route('posts.dislike', $post) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button>dislike</button>
+</form>
+ @else
+ <form action="{{ url('posts/like', $post) }}" method="post">
+    @csrf
+<button>like</button>
+
+</form>
+@endif
+<p>{{ $post->vote->count() }} Likes</p>
+ <br>
+
 
  <div>
      @comments(['model' => $post])
- </div>
- </div>
+
  @if (Auth::user() && (Auth::user()->id == $post->user_id))
     <form action="{{ url('posts.edit', $post) }}" method="post">
                 @csrf
@@ -44,14 +65,16 @@
                 @method('DELETE')
                 <button type="submit" >Delete</button>
             </form>
-@endif
 
 
-
-
+            @endif
 
 
 @endforeach
-
+@include('errors')
+@endsection
+</div>
+</div>
+ </div>
 <br>
 

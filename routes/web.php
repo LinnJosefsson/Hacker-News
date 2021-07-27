@@ -54,15 +54,26 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 
 //comments, testar. behövs ej nog va tänker fel...?
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+//top votes
+Route::get('/votes/top', [PostController::class, 'topVotes'])->name('posts.top');
+
+//like
+Route::post('/posts/like/{post}', [VoteController::class, 'store'])->name('posts.like');
+//unlike
+Route::delete('/posts/dislike/{post}', [VoteController::class, 'destroy'])->name('posts.dislike');
+
 
 // like/unlike
-Route::middleware('auth')->group(function () {
+
+
+/* Route::middleware('auth')->group(function () {
     Route::post('like', [LikeController::class, 'like'])->name('like');
     Route::delete('like', [LikeController::class, 'unlike'])->name('unlike');
-});
+}); */
 
 //most liked
-Route::post('mostlikes', [VoteController::class, 'store'])->name('topVotes');
+/* Route::post('mostlikes', [VoteController::class, 'store'])->name('topVotes'); */
+
 
 
 //update password
