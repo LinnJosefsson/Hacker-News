@@ -7,6 +7,7 @@ use App\Models\Vote;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VoteController extends Controller
 {
@@ -26,15 +27,15 @@ class VoteController extends Controller
     public function destroy(Post $post)
     {
         $user = Auth::user();
-        $user->vote()->where('post_id', $post->id)->delete();
+        $user->vote()->where('post_id', $post->id)->delete(); //sad
 
         return back();
     }
 
     public function topVotes()
     {
+        $posts = Post::withCount('vote')->orderBy('vote_count', 'desc')->get();
 
-        $posts = Post::withCount(['vote'])->paginate(30);
         return view('post.mostlikes', ['posts' => $posts]);
     }
 }

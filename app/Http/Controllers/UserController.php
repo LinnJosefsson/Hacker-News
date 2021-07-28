@@ -44,7 +44,6 @@ class UserController extends Controller
             $imageName = $user->id . '_' . time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName);
             $user->image = $imageName;
-            //lägg till kod för att ta bort gammal bild vid uppdatering
         }
 
         $user->save();

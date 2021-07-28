@@ -5,12 +5,13 @@
 
 
 @foreach ($posts as $post)
-{{-- <img src="{{ asset($post->user->image) }}"> --}}
+<div class="container">
 <h2>{{ $post->title }} </h2>
 <p>Posted by <b>{{ $post->user->name }}</b></p>
 <p>{{$post->created_at}}</p>
  <p> {{ $post->message }}</p>
- <p>{{ $post->vote->count() }} Likes</p>
+ <p>{{ $post->vote->where('vote', 0)->count() }} Likes</p>
+ </div>
  @endforeach
 
 

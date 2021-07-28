@@ -103,12 +103,11 @@ class PostController extends Controller
         return redirect('post'); ////????????
     }
 
-    public function topVotes()
+    /*     public function topVotes()
     {
-
         $posts = Post::withCount(['vote'])->paginate(30);
         return view('post.mostlikes', ['posts' => $posts]);
-    }
+    } */
 }
 /*     public function destroy($id)
     {
